@@ -1,0 +1,36 @@
+{
+  "ServiceOrderType": "SVO1",
+  "ServiceOrderDescription": "[extracted short description of the problem, for example: Broken chainsaw handle]",
+  "Language": "EN",
+  "ServiceDocumentPriority": "5",
+  "RequestedServiceStartDateTime": "[extracted date, in this format: 2024-02-20T00:00:00Z]",
+  "RequestedServiceEndDateTime": "[1 month from RequestedServiceStartDateTime, in this format: 2024-03-20T00:00:00Z]",
+  "SoldToParty": "1000021",
+  "ShipToParty": "1000021",
+  "BillToParty": "1000021",
+  "PayerParty": "1000021",
+  "ContactPerson": "1000584",
+  "TransactionCurrency": "USD",
+  "to_PersonResponsible": [
+    {
+      "PersonResponsible": "9980004554"
+    }
+  ],
+  "to_ProductReferenceObject": [
+    {
+      "ServiceReferenceProduct": "[extracted product, if it is a chainsaw, return:APJPIL202309050706, if it is a shear,return:APJPIL202309050605]"
+    }
+  ],
+  "to_Text": [
+    {
+      "Language": "EN",
+      "LongTextID": "S001",
+      "LongText": "[extracted long description of the problem, for example: Customer wrote that the chainsaw's handle was broken and needs replacement, etc. Limit to 200 words.]"
+    },
+    {
+      "Language": "EN",
+      "LongTextID": "S002",
+      "LongText": "[extracted description of the images attached in the email]"
+    }
+  ]
+}
