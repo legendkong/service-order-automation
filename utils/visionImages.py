@@ -30,7 +30,7 @@ def get_image_description(image_path):
                 "content": [
                     {
                         "type": "text",
-                        "text": "The purpose of this image is for a service order. What’s in this image?"
+                        "text": "The customer sent in this image in an email as an attachment, requesting for a service order. It is highly likely damaged in one way or another.Explain what is wrong with the equipment in the image. "
                     },
                     {
                         "type": "image_url",

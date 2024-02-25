@@ -12,7 +12,7 @@ def encode_image(image_path):
     with open(image_path, "rb") as image_file:
         return base64.b64encode(image_file.read()).decode('utf-8')
 
-def get_image_name(image_path):
+def get_image_name(image_path, email_context):
     base64_image = encode_image(image_path)
 
     headers = {
@@ -28,8 +28,7 @@ def get_image_name(image_path):
                 "content": [
                     {
                         "type": "text",
-                        "text": "The purpose of this image is for a service order. Give a suitable name for this image so that the user can save it in the system and easily identify it. Give the exact name of the image, for example: 'BrokenMotorcycleSeat'. Do not output any other information."
-                    },
+                        "text": f"The purpose of this image attached in an email sent by a customer for a service order request. This is the context of the email: {email_context}. Based on this, give a suitable name for the image appended with the customer name, for example: 'BrokenMotorcycleSeat_JonathanKong', so that the user can save it in the system and easily identify it. Do not output any other information."                    },
                     {
                         "type": "image_url",
                         "image_url": {
