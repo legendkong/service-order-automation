@@ -17,11 +17,11 @@ def post_to_s4hana(json_data):
     
     # Start a session
     session = requests.Session()
-    session.auth = HTTPBasicAuth({SAP_USERNAME}, {SAP_PASSWORD})
+    session.auth = HTTPBasicAuth(SAP_USERNAME, SAP_PASSWORD)
     
     # Fetch CSRF token
     token_response = session.get(token_fetch_url, headers={"X-CSRF-Token": "Fetch"})
-    csrf_token = token_response.headers.get("X-CSRF-Token")
+    csrf_token = token_response.headers.get("x-csrf-token")
     
     if not csrf_token:
         print("Failed to fetch CSRF token")
