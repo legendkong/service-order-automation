@@ -12,7 +12,7 @@ SAP_PASSWORD = os.getenv("SAP_PASSWORD")
 
 # Define a session to reuse HTTP connections and keep cookies
 session = requests.Session()
-session.auth = HTTPBasicAuth({SAP_USERNAME}, {SAP_PASSWORD})
+session.auth = HTTPBasicAuth(SAP_USERNAME, SAP_PASSWORD)
 
 # to get csrf token
 def fetch_csrf_token():
@@ -67,13 +67,13 @@ def find_most_recent_image(directory, extension="jpg"):
     return latest_file, slug
 
 # uploads the most recent image
-def upload_recent_image():
+def upload_recent_image(email_context):
     directory = "C:\\temp\\serviceOrderImages"
     file_path, original_slug = find_most_recent_image(directory)
 
     if file_path and original_slug:
         # Get a suitable name for the image from GPT-4
-        imageName = get_image_name(file_path).strip()
+        imageName = get_image_name(file_path, email_context).strip()
         print(f"\nSuitable name for the image: {imageName}")
         # Prepare a new file name; ensure it's filesystem-safe
         new_slug = imageName.replace(" ", "_") + ".jpg" 
