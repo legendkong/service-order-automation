@@ -89,7 +89,7 @@ def upload_recent_images(email_context, attachments_count):
     for file_path in files:
         timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
         new_file_path, new_slug = rename_image(file_path, email_context, timestamp)
-        description = get_image_description(new_file_path)  # Assuming this function is defined elsewhere
+        # description = get_image_description(new_file_path)  # Assuming this function is defined elsewhere
         upload_serviceorder_image(csrf_token, cookies, new_file_path, new_slug, recent_serviceorder_number)
     return True
 

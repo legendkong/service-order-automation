@@ -1,5 +1,4 @@
 from flask import Flask, request, jsonify
-from openai import OpenAI
 import os
 from dotenv import load_dotenv
 from utils.processEmail import process_email_content
@@ -8,9 +7,6 @@ from utils.insertOrder import post_to_s4hana
 from utils.insertAttachments import upload_recent_images, get_image_description, find_most_recent_images
 
 load_dotenv()
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-
-client = OpenAI()
 
 app = Flask(__name__)
 
@@ -43,9 +39,11 @@ def process_email():
             images_description_str = "\n".join(image_descriptions)
             fileDescription = f"Multiple images attached: \n{images_description_str}"
             modified_combined_message = f"{combined_message}\n\nMultiple images attached:\n{images_description_str}"
+            # print(fileDescription)
         else:
             modified_combined_message = f"{combined_message}\n\nAttached Image Description: {image_descriptions[0]}"
             fileDescription = f"Attached Image Description: \n{image_descriptions[0]}"
+            # print(fileDescription)
     else:
         print("No image file found in the directory.")
         modified_combined_message = combined_message
