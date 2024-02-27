@@ -17,7 +17,7 @@ def process_email_content(combined_message, email_summary, image_description):
     prompt = f'''Given the email content:\n{combined_message}\n\nExtract the necessary information and format it into the following JSON structure, 
                 filling in the details accordingly:\n{example_json_str}\n\nEnsure the extracted values and dates accurately match the email's content. 
                 The RequestedServiceStartDateTime, RequestedServiceEndDateTime, ServiceOrderDescription, ServiceReferenceProduct, and both LongText fields are mandatory to fill it.
-                The ServiceOrderDescription field must be limited to 35 characters, including white space and punctuations. 
+                The ServiceOrderDescription field must be limited to 30 characters, including white space and punctuations. 
                 The format of the date should be YYYY-MM-DDT00:00:00Z format, for example: 2024-03-20T12:31:00Z. 
                 If no date is extracted, use 2024-03-27T12:31:00Z.
                 For the ServiceReferenceProduct, only return either APJPIL202309050706 if it is a chainsaw, or APJPIL202309050605 if it is a shear. If not, default to APJPIL202309050605.
