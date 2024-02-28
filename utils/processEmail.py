@@ -25,7 +25,8 @@ def process_email_content(combined_message, email_summary, image_description):
                 For the LongText field with LongTextID of 'S002', directly copy and paste from: {image_description}.
                 For the LongText field with LongTextID of 'S003', directly copy and paste from: {combined_message}.
                 The response must be a JSON structure in the following format, with the neccessary fields filled in:\n{example_json_str}
-                There should be no nextline characters in the JSON response.'''
+                There should be no nextline characters in the JSON response.
+                Please give the response in a proper, pure JSON format as it will be passed into an API body.'''
                 
                 
                 
