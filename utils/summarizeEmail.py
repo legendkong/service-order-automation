@@ -1,8 +1,8 @@
 # Function to summarize given email content.
 from dotenv import load_dotenv
-from gen_ai_hub.proxy import GenAIHubProxyClient
 load_dotenv()
 
+from gen_ai_hub.proxy import GenAIHubProxyClient
 gen_ai_hub_proxy_client = GenAIHubProxyClient()
 from gen_ai_hub.proxy.native.openai import OpenAI
 
