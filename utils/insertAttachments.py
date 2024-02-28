@@ -77,7 +77,7 @@ def upload_serviceorder_image(csrf_token, cookies, file_path, slug, linked_sap_o
         print("Failed to upload image", response.status_code, response.text)
         
   
-def upload_recent_images(email_context, attachments_count):
+def upload_recent_images(attachments_count):
     directory = "C:\\temp\\serviceOrderImages"
     files = find_most_recent_images(directory, count=attachments_count)
     csrf_token, cookies = fetch_csrf_token()
@@ -87,10 +87,10 @@ def upload_recent_images(email_context, attachments_count):
         return False
     
     for file_path in files:
-        timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
-        new_file_path, new_slug = rename_image(file_path, email_context, timestamp)
-        # description = get_image_description(new_file_path)  # Assuming this function is defined elsewhere
-        upload_serviceorder_image(csrf_token, cookies, new_file_path, new_slug, recent_serviceorder_number)
+        # Assuming file_path is now the path to the already renamed image
+        new_slug = os.path.basename(file_path)  # Extract the slug from the renamed file path
+        # Skip renaming since it's assumed to have been done before this function is called
+        upload_serviceorder_image(csrf_token, cookies, file_path, new_slug, recent_serviceorder_number)
     return True
 
 
@@ -110,17 +110,3 @@ def fetch_most_recent_serviceorder_number():
         print("Failed to fetch service order", response.status_code, response.text)
         return None
 
-
-# if __name__ == '__main__':
-#     directory = "C:\\temp\\serviceOrderImages"
-#     file_path, new_slug = find_most_recent_image(directory)
-    
-#     if file_path and new_slug:
-#         csrf_token, cookies = fetch_csrf_token()
-#         recent_serviceorder_number = fetch_most_recent_serviceorder_number()  # Fetch the service order number
-#         if recent_serviceorder_number:
-#             upload_serviceorder_image(csrf_token, cookies, file_path, new_slug, recent_serviceorder_number)  # Pass the service order number
-#         else:
-#             print("Failed to fetch the most recent service order number.")
-#     else:
-#         print("No recent image file found to upload.")
