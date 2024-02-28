@@ -1,12 +1,10 @@
-
+from dotenv import load_dotenv
+load_dotenv()
 from llm_commons.langchain.proxy import ChatOpenAI
 from langchain.schema.messages import HumanMessage
 from langchain.schema import SystemMessage
 from llm_commons.langchain.proxy import init_llm
-from dotenv import load_dotenv
-load_dotenv()
-
-llm = init_llm('gpt-4-32k', temperature=0, max_tokens=5000)
+import os
 
 messages = [
     HumanMessage(content="Say this is a test"),
