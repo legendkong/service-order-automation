@@ -2,9 +2,6 @@ from dotenv import load_dotenv
 load_dotenv()
 from llm_commons.langchain.proxy import ChatOpenAI
 from langchain.schema.messages import HumanMessage
-from langchain.schema import SystemMessage
-from llm_commons.langchain.proxy import init_llm
-import os
 
 messages = [
     HumanMessage(content="Say this is a test"),
