@@ -34,7 +34,7 @@ def process_email():
             renamed_images_info.append((new_slug, image_description))
 
         if attachments_count > 1:
-            images_description_str = "Multiple images attached.\n" + "\n".join([f"{index + 1}: {slug}: {desc}" for index, (slug, desc) in enumerate(renamed_images_info)])
+            images_description_str = "Multiple images attached:\n" + "\n".join([f"{index + 1}: {slug}: {desc}" for index, (slug, desc) in enumerate(renamed_images_info)])
         else:
             images_description_str = f"Attached Image Description: {renamed_images_info[0][1]}"
 
